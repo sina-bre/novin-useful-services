@@ -1,4 +1,27 @@
 @theme {
   --font-IRANSansXFaNum: 'var(--font-IRANSansXFaNum)';
   --font-IRANSansXFaNum--font-feature-settings: 'ss01', 'ss03', 'ss04';
+
+  /* Primary Colors */
+  --color-primary-light: #5a4bd2;
+  --color-primary-main: #5a4bd2;
+  --color-primary-dark: #5a4bd2;
+  --color-primary-active: #5a4bd2;
+
+  /* Secondary Colors */
+  --color-secondary-light: #75e2dc;
+  --color-secondary-main: #75e2dc;
+  --color-secondary-dark: #75e2dc;
+  --color-secondary-active: #75e2dc;
+
+  /* Error Colors */
+  --color-error-light: #edd5d5;
+  --color-error-main: #a54c4c;
+  --color-error-dark: #b02a37;
+
+  /* Neutral Colors */
+  --color-surface: #f5f7fa;
+  --color-black: #000;
+  --color-custom-gray-100: #aaaaaa;
+  --color-custom-gray-200: #7a7a7a;
 }
