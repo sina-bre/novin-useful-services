@@ -1,0 +1,4 @@
+@theme {
+  --font-IRANSansXFaNum: 'var(--font-IRANSansXFaNum)';
+  --font-IRANSansXFaNum--font-feature-settings: 'ss01', 'ss03', 'ss04';
+}
