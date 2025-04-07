@@ -14,3 +14,11 @@ export const headerFeatures: string[] = [
   'کارمزد مناسب',
   'پشتیبانی 24 ساعته',
 ];
+
+export const bankTransferNavItems: IHeaderMenuItems[] = [
+  { href: '/bank-transfer/iban-inquiry', label: 'استعلام شبا' },
+  { href: '/bank-transfer/card-inquiry', label: 'استعلام کارت' },
+  { href: '/bank-transfer/card-to-sheba', label: 'کارت به شبا' },
+  { href: '/bank-transfer/account-to-sheba', label: 'حساب به شبا' },
+  { href: '/bank-transfer/card-to-account', label: 'کارت به حساب' },
+];

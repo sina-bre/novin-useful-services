@@ -7,7 +7,9 @@ import HeaderNavigation from './HeaderNavigation';
 
 const AppHeader = () => {
   return (
-    <header className={cn('flex justify-between overflow-hidden py-10')}>
+    <header
+      className={cn('flex items-center justify-between overflow-hidden py-10')}
+    >
       <button className={cn('cursor-pointer')}>
         <HamburgerMenu className="text-white!" size={40} iconStyle="Outline" />
       </button>

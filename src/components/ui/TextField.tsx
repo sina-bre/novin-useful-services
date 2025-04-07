@@ -1,115 +1,120 @@
 'use client';
 
-import React, { forwardRef, useState } from 'react';
-import { Eye, EyeClosed } from 'solar-icon-set';
 import { cn } from '@/lib/utils';
-import { TextFieldProps, INPUT_TYPES } from '@/types';
-import { inputVariants, inputWrapperVariants } from '@/lib/ui';
+import { HTMLProps, forwardRef, ChangeEvent, useState } from 'react';
+import { Eye, EyeClosed } from 'solar-icon-set';
+import Flex from './Flex';
+
+type TextFieldProps = {
+  placeholder?: string;
+  error?: string | boolean;
+  className?: string;
+  label?: string;
+  name?: string;
+  required?: boolean;
+  disabled?: boolean;
+  numeric?: boolean;
+  autoComplete?: string;
+  dataTestId?: string;
+  dataCustom?: Record<string, string>;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  iconStart?: JSX.Element;
+  iconEnd?: JSX.Element;
+  type?: 'text' | 'password';
+  inputClassName?: string;
+} & HTMLProps<HTMLInputElement>;
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
     {
+      placeholder,
+      error,
       className,
       label,
-      error,
-      helperText,
+      name,
       required,
       disabled,
       numeric,
-      type = INPUT_TYPES.TEXT,
-      placeholder,
-      startAdornment,
-      endAdornment,
-      fullWidth,
+      autoComplete,
+      value = '',
       onChange,
+      iconStart,
+      iconEnd,
+      type = 'text',
+      inputClassName,
       ...props
     },
     ref,
   ) => {
     const [showPassword, setShowPassword] = useState(false);
-    const isPassword = type === INPUT_TYPES.PASSWORD;
-    const inputType = isPassword && showPassword ? INPUT_TYPES.TEXT : type;
+    const inputType = type === 'password' && showPassword ? 'text' : type;
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (disabled) return;
-
-      if (numeric && !/^[+\d]*$/.test(e.target.value)) return;
-
-      onChange?.(e);
-    };
-
-    const renderPasswordToggle = () => {
-      if (!isPassword) return null;
-
-      return (
-        <button
-          type="button"
-          className="absolute top-1/2 right-3 -translate-y-1/2 p-1 text-gray-500 hover:text-gray-700"
-          onClick={() => setShowPassword((prev) => !prev)}
-          tabIndex={-1}
-        >
-          {showPassword ? <EyeClosed size={20} /> : <Eye size={20} />}
-        </button>
-      );
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const inputValue = e.target.value;
+      if (numeric) {
+        const regex = /^[+\d]*$/;
+        if (!regex.test(inputValue)) return;
+      }
+      if (onChange) onChange(e);
     };
 
     return (
-      <div className={cn('flex flex-col gap-1', className)}>
+      <div className={cn('flex w-full flex-col', className)}>
         {label && (
-          <label className="text-sm font-medium text-gray-700">
-            {label}
-            {required && <span className="text-error-main ml-1">*</span>}
+          <label
+            htmlFor={name}
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
+            {label} {required && <span className="text-error-main">*</span>}
           </label>
         )}
-
-        <div
-          className={cn(
-            inputWrapperVariants({ fullWidth, error: !!error, disabled }),
-          )}
-        >
-          {startAdornment && (
-            <div className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-500">
-              {startAdornment}
+        <div className="relative w-full">
+          {iconStart && (
+            <div className="absolute top-1/2 left-3 -translate-y-1/2">
+              {iconStart}
             </div>
           )}
-
           <input
+            {...props}
             ref={ref}
+            id={name}
+            name={name}
             type={inputType}
-            disabled={disabled}
-            required={required}
             placeholder={placeholder}
+            required={required}
+            disabled={disabled}
+            autoComplete={autoComplete}
+            value={value}
             onChange={handleChange}
             className={cn(
-              inputVariants({
-                error: !!error,
-                withStartAdornment: !!startAdornment,
-                withEndAdornment: !!endAdornment || isPassword,
-                disabled,
-                numeric,
-              }),
+              'h-12 w-full shrink-0 grow rounded-xl bg-white px-4 text-gray-900',
+              'border! border-gray-300! focus:border-gray-400!',
+              disabled ? 'cursor-not-allowed bg-gray-100' : '',
+              error ? 'border-error-main! focus:border-error-main!' : '',
+              iconStart ? 'ps-10' : '',
+              iconEnd || type === 'password' ? 'pe-10' : '',
+              inputClassName,
             )}
-            {...props}
           />
-
-          {renderPasswordToggle()}
-
-          {endAdornment && !isPassword && (
-            <div className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500">
-              {endAdornment}
+          {type === 'password' && (
+            <Flex
+              justify={'center'}
+              align={'center'}
+              className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-500"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? <EyeClosed size={20} /> : <Eye size={20} />}
+            </Flex>
+          )}
+          {iconEnd && type !== 'password' && (
+            <div className="absolute top-1/2 left-3 -translate-y-1/2">
+              {iconEnd}
             </div>
           )}
         </div>
-
-        {(error || helperText) && (
-          <p
-            className={cn(
-              'text-xs',
-              error ? 'text-error-main' : 'text-gray-500',
-            )}
-          >
-            {error || helperText}
-          </p>
+        {typeof error === 'string' && (
+          <p className="text-error-main mt-2 text-xs">{error}</p>
         )}
       </div>
     );

@@ -44,7 +44,7 @@ export const inputVariants = cva(
         false: '',
       },
       numeric: {
-        true: 'dir-ltr text-end',
+        true: 'dir-rtl text-end',
         false: '',
       },
     },
