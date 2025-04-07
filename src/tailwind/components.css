@@ -1,4 +1,26 @@
 @layer components {
+  .heading-1 {
+    @apply text-heading-1 font-bold;
+  }
+  .heading-2 {
+    @apply text-heading-2 font-bold;
+  }
+  .heading-3 {
+    @apply text-heading-3 font-bold;
+  }
+  .heading-4 {
+    @apply text-xl font-bold;
+  }
+  .heading-5 {
+    @apply text-lg;
+  }
+  .caption {
+    @apply text-sm;
+  }
+  .app-container {
+    @apply mx-auto;
+    max-width: 1340px;
+  }
   .dir-rtl {
     direction: rtl;
   }
