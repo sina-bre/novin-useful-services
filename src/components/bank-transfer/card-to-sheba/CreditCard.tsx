@@ -56,59 +56,52 @@ export default function CreditCard({
         className,
       )}
     >
+      <header
+        className={cn(
+          'flex h-10 w-full items-center justify-between overflow-hidden bg-gray-200 px-8',
+        )}
+      >
+        <Flex justify={'between'} align={'center'}>
+          <Image
+            src="/bsiLogo.png"
+            width={35}
+            height={35}
+            className={cn('mr-2')}
+            alt="Bank Logo"
+          />
+          <h3 className={cn('text-primary-main')}>بانک صادرات ایران</h3>
+        </Flex>
+        <Card2 iconStyle="BoldDuotone" size={30} className="text-gray-500!" />
+      </header>
       <Flex
         justify={'between'}
         align={'center'}
         className={cn('mb-4 flex-row-reverse gap-4 px-8')}
       >
-        {/* <header
-          className={cn(
-            'flex h-10 w-full items-center justify-between overflow-hidden bg-gray-200 px-8',
-          )}
-        >
-          <Flex justify={'between'} align={'center'}>
-            <Image
-              src="/bsiLogo.png"
-              width={35}
-              height={35}
-              className={cn('mr-2')}
-              alt="Bank Logo"
-            />
-            <h3 className={cn('text-primary-main')}>بانک صادرات ایران</h3>
-          </Flex>
-          <Card2 iconStyle="BoldDuotone" size={30} className="text-gray-500!" />
-        </header> */}
-
-        <Flex
-          justify={'between'}
-          align={'center'}
-          className={cn('mb-4 flex-row-reverse gap-4 px-8')}
-        >
-          {fieldNamesCredit.map((name, index) => (
-            <Controller
-              key={name}
-              name={name}
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  onChange={(e) => {
-                    field.onChange(e);
-                    handleChange(e as ChangeEvent<HTMLInputElement>, index);
-                  }}
-                  ref={(el) => {
-                    inputRefs.current[index] = el;
-                  }}
-                  onKeyDown={(e) => handleBackspace(e, index)}
-                  maxLength={4}
-                  inputClassName={cn('dir-rtl text-center text-xl p-0')}
-                  numeric
-                  error={!!formError?.[name]}
-                />
-              )}
-            />
-          ))}
-        </Flex>
+        {fieldNamesCredit.map((name, index) => (
+          <Controller
+            key={name}
+            name={name}
+            control={control}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                onChange={(e) => {
+                  field.onChange(e);
+                  handleChange(e as ChangeEvent<HTMLInputElement>, index);
+                }}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
+                onKeyDown={(e) => handleBackspace(e, index)}
+                maxLength={4}
+                inputClassName={cn('dir-rtl text-center text-xl p-0')}
+                numeric
+                error={!!formError?.[name]}
+              />
+            )}
+          />
+        ))}
       </Flex>
     </Flex>
   );
