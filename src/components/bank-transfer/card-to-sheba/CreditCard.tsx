@@ -46,11 +46,9 @@ export default function CreditCard({
     }
   };
 
-  // Watch the card number parts from the form.
   const input1 = useWatch({ control, name: 'input1' }) || '';
   const input2 = useWatch({ control, name: 'input2' }) || '';
 
-  // Construct the BIN from the first 6 digits (4 from input1 and 2 from input2)
   const cardBin = `${input1}${input2.slice(0, 2)}`;
 
   return (

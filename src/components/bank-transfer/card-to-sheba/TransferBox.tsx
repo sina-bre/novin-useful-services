@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { creditCardSchema } from '@/validations';
 import { useForm } from 'react-hook-form';
 
-export default function TransferBox() {
+export default function TransferBox({}) {
   const {
     control,
     handleSubmit,
@@ -27,7 +27,7 @@ export default function TransferBox() {
     <main
       className={cn(
         'from-success-light/100 to-success-light/0 bg-gradient-to-b',
-        'shadow-main flex h-[676px] w-full max-w-[543px] items-center justify-center rounded-[18px] p-[2px]',
+        'shadow-main flex h-[676px] w-full max-w-[543px] items-center justify-center rounded-[18px] p-[2.5px]',
       )}
     >
       <section
@@ -45,7 +45,10 @@ export default function TransferBox() {
         >
           برای استعلام، شماره کارت بانکی خود را وارد کنید
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={cn('flex flex-col items-center justify-center')}
+        >
           <CreditCard
             formError={formError}
             control={control}
