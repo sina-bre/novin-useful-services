@@ -9,7 +9,12 @@ interface CardToShebaPageProps {
 
 export default function CardToShebaPage({ className }: CardToShebaPageProps) {
   return (
-    <AppContainer className={cn('flex w-full justify-around', className)}>
+    <AppContainer
+      className={cn(
+        'flex w-full items-start justify-center gap-[4rem]',
+        className,
+      )}
+    >
       <TransferBox />
       <DescriptionBox />
     </AppContainer>

@@ -9,11 +9,11 @@ export default function BankServicesLayout({
   children: ReactNode;
 }) {
   return (
-    <>
+    <main className="bg-surface">
       <div className={cn('h-full')}>
         <HeroSection />
 
-        <div className="relative z-10 mx-auto mt-[-36px] w-[80%] w-full">
+        <div className="relative z-10 mx-auto mt-[-36px] w-full max-w-[1106px]">
           <Suspense fallback={<NavSkeleton />}>
             <BankTransferNavigation />
           </Suspense>
@@ -23,7 +23,7 @@ export default function BankServicesLayout({
       <section className="mt-[6rem] flex w-full justify-center">
         <Suspense fallback={<ContentSkeleton />}>{children}</Suspense>
       </section>
-    </>
+    </main>
   );
 }
 

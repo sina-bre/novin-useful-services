@@ -4,9 +4,11 @@ import PersonIllustrator from '@public/illustrator-1.png';
 
 export default function DescriptionBox() {
   return (
-    <section className={cn('flex flex-col items-center justify-start gap-5')}>
-      <div className={cn('w-full max-w-[417px] text-center text-xl font-bold')}>
-        کارت به شبا
+    <section
+      className={cn('flex flex-col items-center justify-start gap-5 p-8')}
+    >
+      <div className={cn('w-full max-w-[417px] text-xl font-bold')}>
+        کارت به شبا با سامانه استعلام نوین{' '}
       </div>
       <div
         className={cn(

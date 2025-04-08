@@ -19,50 +19,61 @@ export default function TransferBox() {
     defaultValues: { input1: '', input2: '', input3: '', input4: '' },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: TCreditCard) => {
     console.log(data);
   };
 
   return (
     <main
       className={cn(
-        'bg-red border-success-light shadow-main flex h-[676px] w-full max-w-[543px] flex-col justify-start rounded-lg border-t-2 border-r-2 border-l-2 p-8',
+        'from-success-light/100 to-success-light/0 bg-gradient-to-b',
+        'shadow-main flex h-[676px] w-full max-w-[543px] items-center justify-center rounded-[18px] p-[2px]',
       )}
     >
-      <div className={cn('w-full text-center text-xl font-bold')}>
-        تبدیل شماره کارت به شبا
-      </div>
-      <div
+      <section
         className={cn(
-          'text-custom-gray-300 mt-10 w-full text-center text-lg font-light',
+          'h-full w-full flex-col justify-start rounded-[17px] bg-white p-6',
         )}
       >
-        برای استعلام، شماره کارت بانکی خود را وارد کنید
-      </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <CreditCard
-          formError={formError}
-          control={control}
-          className={cn('mt-5')}
-        />
-        <div className="h-[1rem]">
-          {Object.keys(formError).length > 0 && (
-            <p className="text-error-main mt-4 w-full text-xs">
-              شماره کارت وارد شده اشتباه است{' '}
-            </p>
-          )}
+        <div className={cn('w-full text-center text-xl font-bold')}>
+          تبدیل شماره کارت به شبا
         </div>
-
-        <PriceBox className={cn('mt-[4rem]')} />
         <div
           className={cn(
-            'mt-[4rem] flex w-full items-center justify-center gap-4',
+            'text-custom-gray-300 mt-10 w-full text-center text-lg font-light',
           )}
         >
-          <Button className={cn('bg-success-main m-0 w-[120px]')}>تایید</Button>
-          <Button className={cn('bg-error-main m-0 w-[120px]')}>بازگشت</Button>
+          برای استعلام، شماره کارت بانکی خود را وارد کنید
         </div>
-      </form>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <CreditCard
+            formError={formError}
+            control={control}
+            className={cn('mt-5')}
+          />
+          <div className="h-[1rem]">
+            {Object.keys(formError).length > 0 && (
+              <p className="text-error-main mt-4 w-full text-xs">
+                شماره کارت وارد شده اشتباه است{' '}
+              </p>
+            )}
+          </div>
+
+          <PriceBox className={cn('mt-[4rem]')} />
+          <div
+            className={cn(
+              'mt-[4rem] flex w-full items-center justify-center gap-4',
+            )}
+          >
+            <Button className={cn('bg-success-main m-0 w-[120px]')}>
+              تایید
+            </Button>
+            <Button className={cn('bg-error-main m-0 w-[120px]')}>
+              بازگشت
+            </Button>
+          </div>
+        </form>
+      </section>
     </main>
   );
 }
