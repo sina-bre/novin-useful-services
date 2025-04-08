@@ -95,7 +95,10 @@ export default function CreditCard({
                 }}
                 onKeyDown={(e) => handleBackspace(e, index)}
                 maxLength={4}
-                inputClassName={cn('dir-rtl text-center text-xl p-0')}
+                inputClassName={cn(
+                  'dir-rtl text-center text-xl p-0',
+                  formError?.[name] && 'bg-error-light',
+                )}
                 numeric
                 error={!!formError?.[name]}
               />
