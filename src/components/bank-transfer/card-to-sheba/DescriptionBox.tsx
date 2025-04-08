@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+///
 import PersonIllustrator from '@public/illustrator-1.png';
 
 export default function DescriptionBox() {
