@@ -1,13 +1,13 @@
+// /components/CreditCard.tsx
 'use client';
-
 import TextField from '@/components/ui/TextField';
 import { cn } from '@/lib/utils';
 import { TCreditCard } from '@/types';
 import { ChangeEvent, KeyboardEvent, useRef } from 'react';
-import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { Control, Controller, FieldErrors, useWatch } from 'react-hook-form';
 import { Flex } from '@/components/ui';
-import Image from 'next/image';
 import { Card2 } from 'solar-icon-set';
+import DynamicBankInfo from './DynamicBankInfo';
 
 interface CreditCardProps {
   className?: string;
@@ -31,7 +31,6 @@ export default function CreditCard({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     const value = e.target.value;
-
     if (value.length === 4 && index < fieldNamesCredit.length - 1) {
       inputRefs.current[index + 1]?.focus();
     }
@@ -47,6 +46,13 @@ export default function CreditCard({
     }
   };
 
+  // Watch the card number parts from the form.
+  const input1 = useWatch({ control, name: 'input1' }) || '';
+  const input2 = useWatch({ control, name: 'input2' }) || '';
+
+  // Construct the BIN from the first 6 digits (4 from input1 and 2 from input2)
+  const cardBin = `${input1}${input2.slice(0, 2)}`;
+
   return (
     <Flex
       direction={'col'}
@@ -61,16 +67,8 @@ export default function CreditCard({
           'flex h-10 w-full items-center justify-between overflow-hidden bg-gray-200 px-8',
         )}
       >
-        <Flex justify={'between'} align={'center'}>
-          <Image
-            src="/bsiLogo.png"
-            width={35}
-            height={35}
-            className={cn('mr-2')}
-            alt="Bank Logo"
-          />
-          <h3 className={cn('text-primary-main')}>بانک صادرات ایران</h3>
-        </Flex>
+        {/* Use the dynamic bank info which updates based on the card BIN */}
+        <DynamicBankInfo cardBin={cardBin} />
         <Card2 iconStyle="BoldDuotone" size={30} className="text-gray-500!" />
       </header>
       <Flex

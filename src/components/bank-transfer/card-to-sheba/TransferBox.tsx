@@ -54,11 +54,10 @@ export default function TransferBox() {
           <div className="h-[1rem]">
             {Object.keys(formError).length > 0 && (
               <p className="text-error-main mt-4 w-full text-xs">
-                شماره کارت وارد شده اشتباه است{' '}
+                شماره کارت وارد شده اشتباه است
               </p>
             )}
           </div>
-
           <PriceBox className={cn('mt-[4rem]')} />
           <div
             className={cn(
@@ -73,6 +72,7 @@ export default function TransferBox() {
               بازگشت
             </Button>
             <Button
+              type="submit"
               className={cn(
                 'bg-success-main hover:bg-primary-main m-0 w-[120px]',
               )}

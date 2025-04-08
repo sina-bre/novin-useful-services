@@ -1,0 +1,17 @@
+[
+  {
+    "bins": ["6037", "6038"],
+    "bankName": "بانک صادرات ایران",
+    "logo": "/bsiLogo.png"
+  },
+  {
+    "bins": ["5893", "5894"],
+    "bankName": "بانک ملت",
+    "logo": "/bankMellatLogo.png"
+  },
+  {
+    "bins": ["6273", "6274"],
+    "bankName": "بانک ملی",
+    "logo": "/bankMelliLogo.png"
+  }
+]
