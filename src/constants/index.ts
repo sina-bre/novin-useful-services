@@ -18,7 +18,7 @@ export const headerFeatures: string[] = [
 export const bankTransferNavItems: IHeaderMenuItems[] = [
   { href: '/bank-transfer/iban-inquiry', label: 'استعلام شبا' },
   { href: '/bank-transfer/card-inquiry', label: 'استعلام کارت' },
-  { href: '/bank-transfer/card-to-sheba', label: 'کارت به شبا' },
-  { href: '/bank-transfer/account-to-sheba', label: 'حساب به شبا' },
-  { href: '/bank-transfer/card-to-account', label: 'کارت به حساب' },
+  { href: '/bank-transfer/card-to-sheba', label: 'تبدیل کارت به شبا' },
+  { href: '/bank-transfer/account-to-sheba', label: 'تبدیل حساب به شبا' },
+  { href: '/bank-transfer/card-to-account', label: 'تبدیل کارت به حساب' },
 ];

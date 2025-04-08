@@ -65,11 +65,19 @@ export default function TransferBox() {
               'mt-[4rem] flex w-full items-center justify-center gap-4',
             )}
           >
-            <Button className={cn('bg-success-main m-0 w-[120px]')}>
-              تایید
-            </Button>
-            <Button className={cn('bg-error-main m-0 w-[120px]')}>
+            <Button
+              className={cn(
+                'bg-custom-gray-100 hover:bg-primary-main m-0 w-[120px]',
+              )}
+            >
               بازگشت
+            </Button>
+            <Button
+              className={cn(
+                'bg-success-main hover:bg-primary-main m-0 w-[120px]',
+              )}
+            >
+              تایید
             </Button>
           </div>
         </form>
